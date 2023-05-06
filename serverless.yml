@@ -6,6 +6,8 @@ provider:
   region: us-east-1
 
 functions:
-  hello:
+  generateRandomNumber:
     handler: src/handler.generateRandomNumber
+    timeout: 10
+    memorySize: 128
 

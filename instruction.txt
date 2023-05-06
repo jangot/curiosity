@@ -5,6 +5,7 @@
     3. AWSLambdaRole
     4. AWSCloudFormationFullAccess
     5. AWSLambda_FullAccess
+    6. AmazonS3FullAccess
 3. Create access key for the user
 4. Put the key to secure variables
     1. AWS_ACCESS_KEY_ID
