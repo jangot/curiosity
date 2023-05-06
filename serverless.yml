@@ -8,3 +8,4 @@ provider:
 functions:
   hello:
     handler: src/handler.generateRandomNumber
+
