@@ -10,4 +10,8 @@ functions:
     handler: src/handler.generateRandomNumber
     timeout: 10
     memorySize: 128
+  renderPage:
+    handler: src/render.page
+    timeout: 60
+    memorySize: 256
 
