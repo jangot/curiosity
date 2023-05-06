@@ -11,8 +11,7 @@ functions:
     timeout: 10
     memorySize: 128
   renderPage:
-    url:
-      authorizer: aws_iam
+    url: true
     handler: src/render.page
     timeout: 60
     memorySize: 256
