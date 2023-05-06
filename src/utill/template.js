@@ -7,14 +7,16 @@ class Template {
     }
 
     async render(options = {}) {
-        const html = await readFile(`../templates/${name}.html`);
+        const html = await readFile(`${__dirname }/templates/${name}.html`);
 
         return template(html.toString())(options);
     }
 }
 
 module.exports = {
-    render(name, options = {}) {
+    render: async (name, options = {}) => {
+        const tmp = new Template(name);
 
+        return tmp.render(options);
     }
 }

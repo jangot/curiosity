@@ -2,8 +2,7 @@ const fs = require('fs');
 const _ = require('lodash');
 const Axios = require('axios');
 
-const html = fs.readFileSync(__dirname + '/templates/index.html', { encoding:'utf8' });
-const errorHtml = fs.readFileSync(__dirname + '/templates/error.html', { encoding:'utf8' });
+const { render } = require('./utill/template');
 
 const url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos';
 async function load() {
@@ -42,7 +41,7 @@ exports.page = async (event) => {
             headers: {
                 'Content-Type': 'text/html',
             },
-            body: _.template(html)({
+            body: render('index', {
                 title: 'Random photo from Curiosity',
                 cameraName: camera.full_name,
                 imageSrc: img_src,
@@ -58,7 +57,7 @@ exports.page = async (event) => {
             headers: {
                 'Content-Type': 'text/html',
             },
-            body: _.template(errorHtml)({
+            body: render('error', {
                 title: 'Random photo from Curiosity',
                 sol: 0,
                 message: error.message,
