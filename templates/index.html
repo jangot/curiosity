@@ -1,48 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BD1BJ50WM7"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-BD1BJ50WM7');
-    </script>
-    <meta charset="UTF-8">
-    <title><%= title %></title>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <meta property="og:title" content="<%= title %>">
-    <meta property="og:description" content="The sites shows a random photo from curiosity rover"/>
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://mars.nasa.gov/internal_resources/586">
-    <meta property="og:url" content="https://https://curiosity.pulin.me/">
-</head>
-<body>
-<div class="container">
-    <h1><%= cameraName %></h1>
-    <p>
-        <img title="Next photo" onclick="location.reload()" src="<%= imageSrc %>" style="width: 100%;cursor: pointer;"></img>
-    </p>
-    <p>
-        Data: <%= date %>
-    </p>
-    <p>
-        Sol: <%= sol %>
-    </p>
-    <pre style="display: none;">
+<h1><%= cameraName %></h1>
+<p>
+    <img title="Next photo" onclick="location.reload()" src="<%= imageSrc %>" style="width: 100%;cursor: pointer;"></img>
+</p>
+<p>
+    Data: <%= date %>
+</p>
+<p>
+    Sol: <%= sol %>
+</p>
+<pre style="display: none;">
       <%= data %>
-  </pre>
-</div>
-<!-- Compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</body>
-</html>
+</pre>

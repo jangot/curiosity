@@ -1,7 +1,11 @@
-const { render } = require('./services/template');
+const { Template } = require('./services/template');
 const Nasa = require('./services/nasa');
 
 const nasaService = new Nasa(process.env.NASA_HOST, process.env.NASA_KEY);
+
+const layoutTMP = new Template('layout');
+const indexTMP = new Template('index');
+const errorTMP = new Template('error');
 
 exports.page = async (event) => {
     try {
@@ -12,33 +16,38 @@ exports.page = async (event) => {
         const { photo, params } = res;
 
         const { img_src, camera = {}, earth_date } = photo;
-
-        return {
-            statusCode: 200,
-            headers: {
-                'Content-Type': 'text/html',
-            },
-            body: await render('index', {
-                title: 'Random photo from Curiosity',
+        const body = layoutTMP.render({
+            title: 'Random photo from Curiosity',
+            content: indexTMP.render({
                 cameraName: camera.full_name,
                 imageSrc: img_src,
                 date: earth_date,
                 sol: params.sol,
                 data: JSON.stringify({ item: photo, data: res.data }, null, 4)
-            }),
-        };
-    } catch (error) {
+            })
+        })
         return {
             statusCode: 200,
             headers: {
                 'Content-Type': 'text/html',
             },
-            body: await render('error', {
-                title: 'Random photo from Curiosity',
+            body,
+        };
+    } catch (error) {
+        const body = layoutTMP.render({
+            title: 'Random photo from Curiosity',
+            content: errorTMP.render({
                 sol: 0,
                 message: error.message,
                 data: {}
-            }),
+            })
+        });
+        return {
+            statusCode: 200,
+            headers: {
+                'Content-Type': 'text/html',
+            },
+            body,
         };
     }
 
