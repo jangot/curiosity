@@ -2,8 +2,8 @@ const fs = require('fs');
 const _ = require('lodash');
 const Axios = require('axios');
 
-const html = fs.readFileSync('src/templates/index.html', { encoding:'utf8' });
-const errorHtml = fs.readFileSync('src/templates/error.html', { encoding:'utf8' });
+const html = fs.readFileSync(__dirname + '/templates/index.html', { encoding:'utf8' });
+const errorHtml = fs.readFileSync(__dirname + '/templates/error.html', { encoding:'utf8' });
 
 const url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos';
 async function load() {
