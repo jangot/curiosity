@@ -1,4 +1,5 @@
 name: Deploy Curiosity Lambda
+
 on:
   push:
     branches:
