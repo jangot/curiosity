@@ -1,0 +1,15 @@
+1. Create IAM user
+2. Add group to the user
+    1. CloudWatchLogsFullAccess
+    2. IAMFullAccess
+    3. AWSLambdaRole
+    4. AWSCloudFormationFullAccess
+    5. AWSLambda_FullAccess
+3. Create access key for the user
+4. Put the key to secure variables
+    1. AWS_ACCESS_KEY_ID
+    2. AWS_SECRET_ACCESS_KEY
+5. install npm package globally
+    1. npm i -g serverless
+6. Create project from template
+    1. serverless create --template aws-nodejs
