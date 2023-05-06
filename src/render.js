@@ -41,7 +41,7 @@ exports.page = async (event) => {
             headers: {
                 'Content-Type': 'text/html',
             },
-            body: render('index', {
+            body: await render('index', {
                 title: 'Random photo from Curiosity',
                 cameraName: camera.full_name,
                 imageSrc: img_src,
@@ -51,13 +51,12 @@ exports.page = async (event) => {
             }),
         };
     } catch (error) {
-        console.log('CUSTOM LOG', error);
         return {
             statusCode: 200,
             headers: {
                 'Content-Type': 'text/html',
             },
-            body: render('error', {
+            body: await render('error', {
                 title: 'Random photo from Curiosity',
                 sol: 0,
                 message: error.message,
