@@ -15,4 +15,6 @@ functions:
     handler: src/render.page
     timeout: 60
     memorySize: 1024
+    environment:
+      NASA_KEY: ${NASA_KEY}
 
