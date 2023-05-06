@@ -2,20 +2,22 @@ const { readFile } = require('fs/promises');
 const { readFileSync } = require('fs');
 const { template } = require('lodash');
 
-class Template {
+class TemplateService {
     constructor(name) {
-        this.template = readFileSync(`templates/${name}.html`, { encoding:'utf8' }).toString();
+        this.name = name;
+        this.template = readFileSync(`templates/${this.name}.html`, { encoding:'utf8' }).toString();
     }
 
     render(options = {}) {
-        return template(this.template)(options);
+        try {
+            return template(this.template)(options);
+        } catch (error) {
+            console.log(this.name, error.message);
+
+            throw error;
+        }
+
     }
 }
 
-module.exports = {
-    Template,
-    render: async (name, params = {}) => {
-        const html = await readFile(`templates/${name}.html`, { encoding:'utf8' });
-        return template(html.toString())(params);
-    }
-}
+module.exports = { TemplateService }

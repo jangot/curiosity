@@ -1,6 +1,7 @@
 const Axios = require('axios');
 const { random } = require('lodash');
-module.exports = class Nasa {
+
+class NasaService {
     constructor(baseURL, apiKey) {
         this.key = apiKey;
         this.client = Axios.create({ baseURL });
@@ -24,3 +25,4 @@ module.exports = class Nasa {
         }
     }
 }
+module.exports = { NasaService }
