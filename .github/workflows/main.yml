@@ -1,4 +1,4 @@
-name: Deploy lambda from main branch
+name: Deploy aws lambda from main branch
 
 on:
   push:
