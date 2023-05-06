@@ -7,7 +7,6 @@ module.exports = class Nasa {
     }
 
     async loadPhotosForSol() {
-        const sol = _.random(1, 4000);
         const params = {
             sol: random(1, 4000),
             api_key: this.key,

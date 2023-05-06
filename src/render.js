@@ -5,10 +5,6 @@ const nasaService = new Nasa(process.env.NASA_HOST, process.env.NASA_KEY);
 
 exports.page = async (event) => {
     try {
-        if (event.path === '/error') {
-            throw new Error('Test error')
-        }
-
         let res = await nasaService.loadPhotosForSol();
         while (!res.photo) {
             res = await nasaService.loadPhotosForSol();
