@@ -16,5 +16,5 @@ functions:
     timeout: 60
     memorySize: 1024
     environment:
-      NASA_KEY: ${env.NASA_KEY}
+      NASA_KEY: ${environment.NASA_KEY}
 
