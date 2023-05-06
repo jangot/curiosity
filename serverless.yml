@@ -17,4 +17,5 @@ functions:
     memorySize: 1024
     environment:
       NASA_KEY: ${env:NASA_KEY}
+      NASA_HOST: https://api.nasa.gov
 

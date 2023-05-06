@@ -1,26 +1,7 @@
-const fs = require('fs');
-const _ = require('lodash');
-const Axios = require('axios');
+const { render } = require('./services/template');
+const Nasa = require('./services/nasa');
 
-const { render } = require('./utill/template');
-
-const url = 'https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos';
-async function load() {
-    const params = {
-        sol: _.random(1, 4000),
-        api_key: process.env.NASA_KEY,
-    };
-    const { data } = await Axios.get(url, { params });
-    const photos = data.photos || [];
-
-    const item = _.random(0, photos.length - 1);
-    const photo = photos[item];
-
-    return {
-        params,
-        photo
-    }
-}
+const nasaService = new Nasa(process.env.NASA_HOST, process.env.NASA_KEY);
 
 exports.page = async (event) => {
     try {
@@ -28,9 +9,9 @@ exports.page = async (event) => {
             throw new Error('Test error')
         }
 
-        let res = await load();
+        let res = await nasaService.loadPhotosForSol();
         while (!res.photo) {
-            res = await load();
+            res = await nasaService.loadPhotosForSol();
         }
         const { photo, params } = res;
 
