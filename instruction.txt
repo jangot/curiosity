@@ -13,3 +13,7 @@
     1. npm i -g serverless
 6. Create project from template
     1. serverless create --template aws-nodejs
+7. Move handler.js to src
+8. Change function's name - functions section in serverless.yml
+9. Create .github folder
+10. Create workflows folder there
