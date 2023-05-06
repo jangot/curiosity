@@ -14,5 +14,5 @@ functions:
     url: true
     handler: src/render.page
     timeout: 60
-    memorySize: 256
+    memorySize: 1024
 
