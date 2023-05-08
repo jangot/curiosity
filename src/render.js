@@ -22,7 +22,7 @@ exports.page = async () => {
             imageSrc: img_src,
             date: earth_date,
             sol: params.sol,
-            data: JSON.stringify({ item: photo, data: res.data }, null, 4)
+            data: JSON.stringify({ photo, params }, null, 4)
         });
     } catch (error) {
         content = errorTMP.render({
