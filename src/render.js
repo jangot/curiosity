@@ -2,9 +2,6 @@ const { TemplateService } = require('./services/template');
 const { NasaService } = require('./services/nasa');
 
 const nasaService = new NasaService(process.env.NASA_HOST, process.env.NASA_KEY);
-const layoutTMP = new TemplateService('layout');
-const indexTMP = new TemplateService('index');
-const errorTMP = new TemplateService('error');
 
 console.log('INIT Function!!!');
 exports.page = async () => {
@@ -17,7 +14,7 @@ exports.page = async () => {
         const { photo, params } = res;
 
         const { img_src, camera = {}, earth_date } = photo;
-        content = indexTMP.render({
+        content = new TemplateService('index').render({
             cameraName: camera.full_name,
             imageSrc: img_src,
             date: earth_date,
@@ -25,7 +22,7 @@ exports.page = async () => {
             data: JSON.stringify({ photo, params }, null, 4)
         });
     } catch (error) {
-        content = errorTMP.render({
+        content = new TemplateService('error').render({
             message: error.message
         });
     }
@@ -35,7 +32,7 @@ exports.page = async () => {
         headers: {
             'Content-Type': 'text/html',
         },
-        body: layoutTMP.render({ content }),
+        body: new TemplateService('layout').render({ content }),
     };
 
 };
