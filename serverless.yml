@@ -6,7 +6,7 @@ provider:
   region: us-east-1
 
 functions:
-  generateRandomNumber:
+  updateRun:
     handler: src/update.run
     timeout: 10
     memorySize: 128
