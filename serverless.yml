@@ -1,7 +1,7 @@
 service: curiosity-lambda
 provider:
   name: aws
-  runtime: nodejs14.x
+  runtime: nodejs18.x
   stage: production
   region: us-east-1
 
@@ -17,7 +17,7 @@ functions:
     url: true
     handler: src/render.page
     timeout: 60
-    memorySize: 1024
+    memorySize: 512
     environment:
       NASA_KEY: ${env:NASA_KEY}
       NASA_HOST: https://api.nasa.gov
