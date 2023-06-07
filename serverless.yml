@@ -21,3 +21,9 @@ functions:
     environment:
       NASA_KEY: ${env:NASA_KEY}
       NASA_HOST: https://api.nasa.gov
+    events:
+      - cloudFront:
+          eventType: render.page
+          pathPattern: /*
+          origin:
+            OriginPath: /
