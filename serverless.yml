@@ -4,6 +4,7 @@ provider:
   runtime: nodejs18.x
   stage: production
   region: us-east-1
+
 functions:
   updateRun:
     handler: src/update.run
@@ -20,9 +21,3 @@ functions:
     environment:
       NASA_KEY: ${env:NASA_KEY}
       NASA_HOST: https://api.nasa.gov
-    events:
-      - cloudFront:
-          eventType: render.page
-          pathPattern: /*
-          origin:
-            OriginPath: /
