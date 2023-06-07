@@ -4,7 +4,6 @@ provider:
   runtime: nodejs18.x
   stage: production
   region: us-east-1
-
 functions:
   updateRun:
     handler: src/update.run
