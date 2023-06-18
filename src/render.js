@@ -18,7 +18,7 @@ exports.page = async () => {
             cameraName: camera.full_name,
             imageSrc: img_src,
             date: earth_date,
-            sol: params.sol,
+            sol: photo.sol,
             data: JSON.stringify({ photo, params }, null, 4)
         });
     } catch (error) {
