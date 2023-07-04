@@ -8,7 +8,10 @@ exports.page = async (event) => {
     if (/webhook/.test(event.path)) {
         const query = event.queryStringParameters || {};
         return {
-            status: 200,
+            statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: {
                 query,
                 verify_token: query['hub.verify_token'] || 'none'
