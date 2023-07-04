@@ -6,17 +6,17 @@ const nasaService = new NasaService(process.env.NASA_HOST, process.env.NASA_KEY)
 console.log('INIT Function!!!');
 exports.page = async (event) => {
     if (/webhook/.test(event.path)) {
-        // const query = event.queryStringParameters || {};
+        const query = event.queryStringParameters || {};
         return {
             statusCode: 200,
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ hello: 'world' }),
-            // body: {
-            //     query,
-            //     verify_token: query['hub.verify_token'] || 'none'
-            // },
+            body: JSON.stringify({
+                query,
+                // verify_token: query['hub.verify_token'] || 'none',
+                hello: 'world'
+            }),
         }
     }
 
