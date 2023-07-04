@@ -12,7 +12,7 @@ exports.page = async (event) => {
             headers: {
                 'Content-Type': 'text/plain',
             },
-            body: query['hub.verify_token'] || 'none',
+            body: query['hub.challenge'] || 'none',
         }
     }
 
