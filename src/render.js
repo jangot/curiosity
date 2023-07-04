@@ -10,13 +10,9 @@ exports.page = async (event) => {
         return {
             statusCode: 200,
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'text/plain',
             },
-            body: JSON.stringify({
-                query,
-                verify_token: query['hub.verify_token'] || 'none',
-                hello: 'world'
-            }),
+            body: query['hub.verify_token'] || 'none',
         }
     }
 
