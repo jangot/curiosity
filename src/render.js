@@ -14,7 +14,7 @@ exports.page = async (event) => {
             },
             body: JSON.stringify({
                 query,
-                // verify_token: query['hub.verify_token'] || 'none',
+                verify_token: query['hub.verify_token'] || 'none',
                 hello: 'world'
             }),
         }
