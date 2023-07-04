@@ -4,7 +4,19 @@ const { NasaService } = require('./services/nasa');
 const nasaService = new NasaService(process.env.NASA_HOST, process.env.NASA_KEY);
 
 console.log('INIT Function!!!');
-exports.page = async () => {
+exports.page = async (event) => {
+    if (/webhook/.test(event.path)) {
+        const query = event.queryStringParameters || {};
+        console.log({
+            path: event.path,
+            query,
+        })
+        return {
+            status: 200,
+            body: query['hub.verify_token '],
+        }
+    }
+
     let content = '';
     try {
         let res = await nasaService.loadPhotosForSol();
